@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.0'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'checkstyle'
 }
 
 group = 'com.example'
@@ -27,6 +28,13 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// Checkstyle 10.x : la série 11+ exige Java 21, la CI tourne en Java 17.
+checkstyle {
+	toolVersion = '10.26.1'
+	configFile = file('config/checkstyle/checkstyle.xml')
+	maxWarnings = 0
 }
 
 tasks.withType(JavaCompile).configureEach {
