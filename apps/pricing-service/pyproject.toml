@@ -1,3 +1,12 @@
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+# E : erreurs de style (PEP 8), F : erreurs logiques (Pyflakes),
+# I : ordre des imports (isort).
+select = ["E", "F", "I"]
